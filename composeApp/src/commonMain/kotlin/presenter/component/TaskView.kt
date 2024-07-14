@@ -7,8 +7,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -21,6 +21,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import domain.TodoTask
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /**
  * @author riezky maisyar
@@ -69,12 +70,37 @@ fun TaskView(
             }
         ) {
             Icon(
-                imageVector = if (showActive) Icons.Default.Add else Icons.Default.Delete,
+                imageVector = if (showActive) Icons.Default.Star else Icons.Default.Delete,
                 contentDescription = "Favorite Icon",
                 tint = if (task.favorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface.copy(
                     alpha = 0.38f
                 )
             )
         }
+    }
+}
+
+@Preview()
+@Composable
+fun TaskViewPrev() {
+    MaterialTheme {
+        TaskView(
+            task = TodoTask().apply {
+                title = "Title"
+                description = "Description"
+            },
+            onSelect = { task ->
+
+            },
+            onComplete = { task, completed ->
+
+            },
+            onFavorite = { task, favorite ->
+
+            },
+            onDelete = {
+
+            },
+        )
     }
 }
